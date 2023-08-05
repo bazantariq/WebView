@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -22,7 +23,7 @@ import org.imaginativeworld.oopsnointernet.dialogs.signal.NoInternetDialogSignal
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     WebView webview;
     SwipeRefreshLayout swipeLayout;
-    String currentUrl="https://ezxsohxe6.play.gamezop.com/";
+    String currentUrl="https://prime.epeoc.com/splash.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         webview.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                webview.setBackgroundColor(Color.BLACK);
                 Snackbar.make(view, "Connection Error", Snackbar.LENGTH_LONG)
                         .setAction("Retry", new View.OnClickListener() {
                             @Override
