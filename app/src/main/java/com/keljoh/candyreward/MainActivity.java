@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -23,7 +24,7 @@ import org.imaginativeworld.oopsnointernet.dialogs.signal.NoInternetDialogSignal
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
     WebView webview;
     SwipeRefreshLayout swipeLayout;
-    String currentUrl="https://prime.epeoc.com/splash.php";
+    String currentUrl="https://al-faa.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +125,24 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     webview.goBack();
                     return true;
                 }
+
+                if(url.startsWith("insta:") || url.startsWith("instagram")) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                    webview.goBack();
+                    return true;
+                }
+
+                /*if(url.startsWith("snssdk") || url.startsWith("tiktok")) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    startActivity(intent);
+                    webview.goBack();
+                    return true;
+                }*/
+
+
 
                 if(url.startsWith("market") || url.startsWith("https://play")) {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
